@@ -25,8 +25,8 @@ export class LoggerMiddleware implements NestMiddleware {
             } catch (e) { /* leave as string if not JSON */ }
 
             this.logger.log(`[${method}] ${originalUrl} ${statusCode}`);
-            this.logger.log(`   ↳ Request:  ${JSON.stringify(request.body || {})}`);
-            this.logger.log(`   ↳ Response: ${JSON.stringify(parsedResponse || {})}`);
+            this.logger.log(`   ↳ Request: \n  ${JSON.stringify(request.body || {}, null, 2)}`);
+            this.logger.log(`   ↳ Response: \n ${JSON.stringify(parsedResponse || {}, null, 2)}`);
         });
 
         next();
